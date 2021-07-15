@@ -4,9 +4,9 @@ import CartIcon from '../Cart/CartIcon';
 
 
 
-const HeaderCartButton = () => {
+const HeaderCartButton = (props) => {
 
-    return <button className={classes.button}>
+    return <button className={classes.button} onClick={props.onClick}>
         <spin className={classes.icon}>
             <CartIcon/>
         </spin>

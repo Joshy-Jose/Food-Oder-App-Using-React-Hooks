@@ -3,13 +3,14 @@ import classes from './Header.module.css';
 import mealsImage from '../../assets/meals.jpg';
 import HeaderCartButton from './HeaderCartButton';
 
-const Header = () =>                                     // is there any '-' in style name use format className={classes['main-image'] 
+const Header = (props) =>                                     // is there any '-' in style name use format className={classes['main-image'] 
 {
+
     return (
     <Fragment>
        <header className={classes.header}>
            <h1>ReactMeals</h1>
-           <HeaderCartButton/>
+           <HeaderCartButton onClick={props.onShowCart}/>
         </header> 
        
        <div className={classes['main-image']}>                 
