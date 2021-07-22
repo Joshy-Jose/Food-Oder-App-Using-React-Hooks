@@ -13,9 +13,14 @@ const cartCtx = useContext(CartContext);
 const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 const hasItem = cartCtx.item.length > 0;
 
-const cartItemRemoveHandler = id => {};
+const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+};
 
-const cartItemAddHandler = item => {};
+const cartItemAddHandler = item => {
+  //  cartCtx.addItem({...item.amount:1}); //addItem invoked in cart provider
+   cartCtx.addItem(item);
+};
 
 //bind pre-configure as a function to future exicution and basically 
 //allow you to pre-configure the argument that function will receive when its being executed
