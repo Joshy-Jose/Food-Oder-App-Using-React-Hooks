@@ -26,7 +26,7 @@ const Checkout = (props) => {
     const enteredName = nameInputRef.current.value;
     const enteredStreet = streetInputRef.current.value;
     const enteredPostCode = postalCodeInputRef.current.value;
-    const enteredCity = nameInputRef.current.value;
+    const enteredCity = cityInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
@@ -54,6 +54,7 @@ const Checkout = (props) => {
         postalCode:enteredPostCode
     });
 
+   
   };
 // adding extra invalid classes if the field is invalid
 

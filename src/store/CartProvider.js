@@ -69,6 +69,10 @@ console.log('state',state);
 
     }
 
+    if(action.type === 'CLEAR') {
+        return defaultCartState;
+    }
+
     return defaultCartState; 
 };
 
@@ -87,12 +91,16 @@ const CartProvider = props => {
         dispatchCartAction ({type: 'REMOVE', id: id})
     };
 
+    const clearCartHandler = () => {
+        dispatchCartAction({type: 'CLEAR'})
+    };
+
     const cartContext = {
         item: cartState.item,
         totalAmount : cartState.totalAmount,
         addItem: addItemToCartHandler,
-        removeItem: removeItemFromCartHandler
-
+        removeItem: removeItemFromCartHandler,
+        clearCart: clearCartHandler
     };
 
 
