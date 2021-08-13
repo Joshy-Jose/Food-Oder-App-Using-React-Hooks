@@ -8,12 +8,20 @@ import MealItem from './MealItem/MealItem';
 
     const [meals, setMeals] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [httpError, setHttpError] = useState(null);
 
   useEffect(() => {
 
     const fetchMeals = async () => {
     const response = await fetch('https://react-http-hooks-88948-default-rtdb.europe-west1.firebasedatabase.app/meals.json');
     const resposeData = await response.json();
+   
+   
+   if(!response.ok)
+   {
+     throw new Error('Something went wrong!');
+   }
+   
    
     const loadedMeals = [];
 
@@ -30,13 +38,24 @@ import MealItem from './MealItem/MealItem';
     setIsLoading(false);
     };
 
-    fetchMeals();
-  
-  },[]);
+
+      fetchMeals().catch (error =>  {              //will get an error object here.it have a default error property,we get access an set message             
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
+     },[]);
 
   if(isLoading)
   {
     return(<section className={clasess.MealsLoading}>Loading....</section>)
+  }
+
+  if(httpError) {
+    return (
+      <section className={clasess.MealsError}>
+        <p>{httpError}</p>
+      </section>
+    )
   }
 
     const mealList = meals.map((meal) => <MealItem 
